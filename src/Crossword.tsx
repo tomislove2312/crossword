@@ -14,51 +14,51 @@ import CrosswordProvider, {
 import CrosswordGrid from './CrosswordGrid';
 import DirectionClues from './DirectionClues';
 
-// interface OuterWrapperProps {
-//   correct?: boolean;
-// }
+interface OuterWrapperProps {
+  correct?: boolean;
+}
 
-// const OuterWrapper = styled.div.attrs<OuterWrapperProps>((props) => ({
-//   className: `crossword${props.correct ? ' correct' : ''}`,
-// }))<OuterWrapperProps>`
-//   margin: 0;
-//   padding: 0;
-//   border: 0;
-//   /* position: relative; */
-//   /* width: 40%; */
-//   display: flex;
-//   flex-direction: row;
-
-//   @media (max-width: ${(props) => props.theme.columnBreakpoint}) {
-//     flex-direction: column;
-//   }
-// `;
-
-const CluesWrapper = styled.div.attrs((/* props */) => ({
-  className: 'clues',
-}))`
-  padding: 0 1em;
-  flex: 1 2 25%;
+const OuterWrapper = styled.div.attrs<OuterWrapperProps>((props) => ({
+  className: `crossword${props.correct ? ' correct' : ''}`,
+}))<OuterWrapperProps>`
+  margin: 0;
+  padding: 0;
+  border: 0;
+  /* position: relative; */
+  /* width: 40%; */
+  display: flex;
+  flex-direction: row;
 
   @media (max-width: ${(props) => props.theme.columnBreakpoint}) {
-    margin-top: 2em;
-  }
-
-  .direction {
-    margin-bottom: 2em;
-    /* padding: 0 1em;
-    flex: 1 1 20%; */
-
-    .header {
-      margin-top: 0;
-      margin-bottom: 0.5em;
-    }
-
-    div {
-      margin-top: 0.5em;
-    }
+    flex-direction: column;
   }
 `;
+
+// const CluesWrapper = styled.div.attrs((/* props */) => ({
+//   className: 'clues',
+// }))`
+//   padding: 0 1em;
+//   flex: 1 2 25%;
+
+//   @media (max-width: ${(props) => props.theme.columnBreakpoint}) {
+//     margin-top: 2em;
+//   }
+
+//   .direction {
+//     margin-bottom: 2em;
+//     /* padding: 0 1em;
+//     flex: 1 1 20%; */
+
+//     .header {
+//       margin-top: 0;
+//       margin-bottom: 0.5em;
+//     }
+
+//     div {
+//       margin-top: 0.5em;
+//     }
+//   }
+// `;
 
 const crosswordPropTypes = {
   ...crosswordProviderPropTypes,
@@ -132,12 +132,12 @@ const Crossword = React.forwardRef<CrosswordImperative, CrosswordProps>(
 
     return (
       <CrosswordProvider {...props} ref={providerRef}>
-        <CrosswordGrid />
-        <CluesWrapper>
-          <p>proba</p>
+        <OuterWrapper>
+          <CrosswordGrid />
+
           <DirectionClues direction="across" label={acrossLabel} />
           <DirectionClues direction="down" label={downLabel} />
-        </CluesWrapper>
+        </OuterWrapper>
       </CrosswordProvider>
     );
   }

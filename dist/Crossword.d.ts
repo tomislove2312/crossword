@@ -16,7 +16,6 @@ declare const crosswordPropTypes: {
                 col: PropTypes.Validator<number>;
             }>>;
         }>;
-        /** the label for the "down" clues */
         down: PropTypes.Validator<{
             [x: string]: NonNullable<PropTypes.InferProps<{
                 clue: PropTypes.Validator<string>;
@@ -71,7 +70,6 @@ declare const Crossword: React.ForwardRefExoticComponent<Omit<PropTypes.InferPro
                 col: PropTypes.Validator<number>;
             }>>;
         }>;
-        /** the label for the "down" clues */
         down: PropTypes.Validator<{
             [x: string]: NonNullable<PropTypes.InferProps<{
                 clue: PropTypes.Validator<string>;

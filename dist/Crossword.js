@@ -45,48 +45,42 @@ const styled_components_1 = __importDefault(require("styled-components"));
 const CrosswordProvider_1 = __importStar(require("./CrosswordProvider"));
 const CrosswordGrid_1 = __importDefault(require("./CrosswordGrid"));
 const DirectionClues_1 = __importDefault(require("./DirectionClues"));
-// interface OuterWrapperProps {
-//   correct?: boolean;
-// }
-// const OuterWrapper = styled.div.attrs<OuterWrapperProps>((props) => ({
-//   className: `crossword${props.correct ? ' correct' : ''}`,
-// }))<OuterWrapperProps>`
-//   margin: 0;
-//   padding: 0;
-//   border: 0;
-//   /* position: relative; */
-//   /* width: 40%; */
-//   display: flex;
-//   flex-direction: row;
-//   @media (max-width: ${(props) => props.theme.columnBreakpoint}) {
-//     flex-direction: column;
-//   }
-// `;
-const CluesWrapper = styled_components_1.default.div.attrs(( /* props */) => ({
-    className: 'clues',
+const OuterWrapper = styled_components_1.default.div.attrs((props) => ({
+    className: `crossword${props.correct ? ' correct' : ''}`,
 })) `
-  padding: 0 1em;
-  flex: 1 2 25%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  /* position: relative; */
+  /* width: 40%; */
+  display: flex;
+  flex-direction: row;
 
   @media (max-width: ${(props) => props.theme.columnBreakpoint}) {
-    margin-top: 2em;
-  }
-
-  .direction {
-    margin-bottom: 2em;
-    /* padding: 0 1em;
-    flex: 1 1 20%; */
-
-    .header {
-      margin-top: 0;
-      margin-bottom: 0.5em;
-    }
-
-    div {
-      margin-top: 0.5em;
-    }
+    flex-direction: column;
   }
 `;
+// const CluesWrapper = styled.div.attrs((/* props */) => ({
+//   className: 'clues',
+// }))`
+//   padding: 0 1em;
+//   flex: 1 2 25%;
+//   @media (max-width: ${(props) => props.theme.columnBreakpoint}) {
+//     margin-top: 2em;
+//   }
+//   .direction {
+//     margin-bottom: 2em;
+//     /* padding: 0 1em;
+//     flex: 1 1 20%; */
+//     .header {
+//       margin-top: 0;
+//       margin-bottom: 0.5em;
+//     }
+//     div {
+//       margin-top: 0.5em;
+//     }
+//   }
+// `;
 const crosswordPropTypes = Object.assign(Object.assign({}, CrosswordProvider_1.crosswordProviderPropTypes), { 
     /** the label for the "across" clues */
     acrossLabel: prop_types_1.default.string, 
@@ -132,7 +126,7 @@ const Crossword = react_1.default.forwardRef((_a, ref) => {
          */
         setGuess: (row, col, guess) => { var _a; return (_a = providerRef.current) === null || _a === void 0 ? void 0 : _a.setGuess(row, col, guess); },
     }), []);
-    return ((0, jsx_runtime_1.jsxs)(CrosswordProvider_1.default, Object.assign({}, props, { ref: providerRef }, { children: [(0, jsx_runtime_1.jsx)(CrosswordGrid_1.default, {}), (0, jsx_runtime_1.jsxs)(CluesWrapper, { children: [(0, jsx_runtime_1.jsx)("p", { children: "proba" }), (0, jsx_runtime_1.jsx)(DirectionClues_1.default, { direction: "across", label: acrossLabel }), (0, jsx_runtime_1.jsx)(DirectionClues_1.default, { direction: "down", label: downLabel })] })] })));
+    return ((0, jsx_runtime_1.jsx)(CrosswordProvider_1.default, Object.assign({}, props, { ref: providerRef }, { children: (0, jsx_runtime_1.jsxs)(OuterWrapper, { children: [(0, jsx_runtime_1.jsx)(CrosswordGrid_1.default, {}), (0, jsx_runtime_1.jsx)(DirectionClues_1.default, { direction: "across", label: acrossLabel }), (0, jsx_runtime_1.jsx)(DirectionClues_1.default, { direction: "down", label: downLabel })] }) })));
 });
 Crossword.displayName = 'Crossword';
 Crossword.propTypes = crosswordPropTypes;
