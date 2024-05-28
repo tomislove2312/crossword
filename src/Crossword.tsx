@@ -134,7 +134,7 @@ const Crossword = React.forwardRef<CrosswordImperative, CrosswordProps>(
       <CrosswordProvider {...props} ref={providerRef}>
         <CrosswordGrid />
         <CluesWrapper>
-          <DirectionClues direction="across" label={acrossLabel} />
+          <DirectionClues direction="proba" label={acrossLabel} />
           <DirectionClues direction="down" label={downLabel} />
         </CluesWrapper>
       </CrosswordProvider>
